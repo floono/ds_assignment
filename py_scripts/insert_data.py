@@ -21,11 +21,11 @@ def insertFunc(csv_path, insert_stmt):
         next(reader)
         for row in reader:
             for i in range(len(row)):
-                if(row[i] == ''):
+                if(row[i] == ''): # NULL entries
                     row[i] = None
-                elif re.match(r"^\d{4}-\d{2}-\d{2}$", row[i]):
+                elif re.match(r"^\d{4}-\d{2}-\d{2}$", row[i]): # Date entries
                     row[i] = datetime.strptime(row[i], "%Y-%m-%d").date()
-                elif re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$", row[i]):
+                elif re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$", row[i]): # Datetime entries
                     row[i] = datetime.strptime(row[i], "%Y-%m-%d %H:%M%S").date()
             cursor.execute(insert_stmt, row)
     connection.commit()
