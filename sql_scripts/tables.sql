@@ -35,11 +35,12 @@ CREATE TABLE Athletes(
 );
 
 CREATE TABLE Medals(
+    medal_id INT AUTO_INCREMENT,
     medal_date DATE,
     medal_type VARCHAR(50),
     athlete_code CHAR(7) NOT NULL,
+    PRIMARY KEY (medal_id),
     FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code),
-    PRIMARY KEY (athlete_code, medal_date, medal_type)
 );
 
 CREATE TABLE TeamParticipants(
