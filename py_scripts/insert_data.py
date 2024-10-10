@@ -10,7 +10,7 @@ connection = mysql.connector.connect(
     host='localhost',
     database='dswork'
 )
-cursor = connection.cursor('INSERT INTO Countries (country_code, country_name) VALUES (a, b);')
+cursor = connection.cursor()
 
 # Function to read by row and insert data
 def insertFunc(csv_path, insert_stmt):
