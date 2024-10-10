@@ -40,7 +40,7 @@ CREATE TABLE Medals(
     medal_type VARCHAR(50),
     athlete_code CHAR(7) NOT NULL,
     PRIMARY KEY (medal_id),
-    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code),
+    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code)
 );
 
 CREATE TABLE TeamParticipants(
