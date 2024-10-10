@@ -1,6 +1,7 @@
 import mysql.connector
 import csv
-import datetime
+from datetime import datetime
+from datetime import date
 import re
 
 connection = mysql.connector.connect(
