@@ -7,7 +7,7 @@ CREATE TABLE Countries(
 CREATE TABLE Teams(
     team_code CHAR(17),
     team_name VARCHAR(100) NOT NULL,
-    team_gender ENUM('M', 'F', 'X', 'O'),
+    team_gender CHAR(1),
     PRIMARY KEY (team_code)
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE Events(
 CREATE TABLE Athletes(
     athlete_code CHAR(7),
     athlete_name VARCHAR(100) NOT NULL,
-    athlete_gender ENUM('M', 'F', 'X', 'O'),
+    athlete_gender CHAR(1),
     country_code CHAR(3) NOT NULL,
     athlete_height INT,
     athlete_birth_date DATE,
@@ -36,9 +36,10 @@ CREATE TABLE Athletes(
 
 CREATE TABLE Medals(
     medal_date DATE,
-    medal_type ENUM('Gold Medal', 'Silver Medal', 'Bronze Medal'),
+    medal_type VARCHAR(50),
     athlete_code CHAR(7) NOT NULL,
-    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code)
+    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code),
+    PRIMARY KEY (athlete_code, medal_date, medal_type)
 );
 
 CREATE TABLE TeamParticipants(
