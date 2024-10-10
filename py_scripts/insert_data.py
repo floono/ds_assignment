@@ -11,9 +11,6 @@ connection = mysql.connector.connect(
 )
 cursor = connection.cursor('INSERT INTO Countries (country_code, country_name) VALUES (a, b);')
 
-cursor.execute()
-
-
 # Function to read by row and insert data
 def insertFunc(csv_path, insert_stmt):
     with open(csv_path, mode='r') as csvfile:
