@@ -24,7 +24,7 @@ def insertFunc(csv_path, insert_stmt):
                 elif re.match(r"^\d{4}-\d{2}-\d{2}$", row[i]): # Date entries
                     row[i] = datetime.strptime(row[i], "%Y-%m-%d").date()
                 elif re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$", row[i]): # Datetime entries
-                    row[i] = datetime.strptime(row[i], "%Y-%m-%d %H:%M%S")
+                    row[i] = datetime.strptime(row[i], "%Y-%m-%d %H:%M:%S")
             cursor.execute(insert_stmt, row)
     connection.commit()
 
