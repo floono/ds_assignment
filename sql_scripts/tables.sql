@@ -12,7 +12,7 @@ CREATE TABLE Teams(
 );
 
 CREATE TABLE Events(
-    stage_code CHAR(32),
+    stage_code CHAR(34),
     discipline_name VARCHAR(100) NOT NULL,
     event_name VARCHAR(100) NOT NULL,
     event_datetime DATETIME,
@@ -44,7 +44,7 @@ CREATE TABLE Medals(
 
 CREATE TABLE TeamParticipants(
     team_code CHAR(17),
-    stage_code CHAR(32),
+    stage_code CHAR(34),
     result_rank INT,
     result VARCHAR(50),
     result_type VARCHAR(50),
@@ -55,7 +55,7 @@ CREATE TABLE TeamParticipants(
 
 CREATE TABLE IndividualParticipants(
     athlete_code CHAR(7),
-    stage_code CHAR(32),
+    stage_code CHAR(34),
     result_rank INT,
     result VARCHAR(50),
     result_type VARCHAR(50),
