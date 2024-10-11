@@ -7,7 +7,7 @@ CREATE TABLE Countries(
 CREATE TABLE Teams(
     team_code CHAR(17),
     team_name VARCHAR(100) NOT NULL,
-    team_gender CHAR(1) CHECK (team_gender == 'M' OR team_gender == 'F' OR team_gender == 'O' OR team_gender == 'X'),
+    team_gender CHAR(1) CHECK (team_gender = 'M' OR team_gender = 'F' OR team_gender = 'O' OR team_gender = 'X'),
     PRIMARY KEY (team_code)
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE Events(
 CREATE TABLE Athletes(
     athlete_code CHAR(7),
     athlete_name VARCHAR(100) NOT NULL,
-    athlete_gender CHAR(1) CHECK (athlete_gender == 'M' OR athlete_gender == 'F' OR athlete_gender == 'O' OR athlete_gender == 'X'),
+    athlete_gender CHAR(1) CHECK (athlete_gender = 'M' OR athlete_gender = 'F' OR athlete_gender = 'O' OR athlete_gender = 'X'),
     country_code CHAR(3) NOT NULL,
     athlete_height INT,
     athlete_birth_date DATE,
