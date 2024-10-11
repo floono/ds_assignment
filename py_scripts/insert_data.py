@@ -8,7 +8,7 @@ connection = mysql.connector.connect(
     user='me',
     password='myUserPassword',
     host='localhost',
-    database='2024_Olympics_21425477'
+    database='dswork'
 )
 cursor = connection.cursor()
 
