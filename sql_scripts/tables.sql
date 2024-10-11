@@ -1,6 +1,9 @@
 CREATE TABLE Countries(
     country_code CHAR(3),
     country_name VARCHAR(100) NOT NULL,
+    gold_count INT DEFAULT 0,
+    silver_count INT DEFAULT 0,
+    bronze_count INT DEFAULT 0,
     PRIMARY KEY (country_code)
 );
 
