@@ -7,7 +7,7 @@ CREATE TABLE Countries(
 CREATE TABLE Teams(
     team_code CHAR(17),
     team_name VARCHAR(100) NOT NULL,
-    team_gender CHAR(1) CHECK (team_gender = 'M' OR team_gender = 'F' OR team_gender = 'O' OR team_gender = 'X'),
+    team_gender CHAR(1) CHECK (team_gender = 'M' OR team_gender = 'W' OR team_gender = 'O' OR team_gender = 'X'),
     PRIMARY KEY (team_code)
 );
 
