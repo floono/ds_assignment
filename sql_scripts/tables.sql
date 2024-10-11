@@ -7,7 +7,7 @@ CREATE TABLE Countries(
 CREATE TABLE Teams(
     team_code CHAR(17),
     team_name VARCHAR(100) NOT NULL,
-    team_gender CHAR(1),
+    team_gender CHAR(1) CHECK (team_gender == 'M' OR team_gender == 'F' OR team_gender == 'O' OR team_gender == 'X'),
     PRIMARY KEY (team_code)
 );
 
@@ -24,13 +24,13 @@ CREATE TABLE Events(
 CREATE TABLE Athletes(
     athlete_code CHAR(7),
     athlete_name VARCHAR(100) NOT NULL,
-    athlete_gender CHAR(1),
+    athlete_gender CHAR(1) CHECK (athlete_gender == 'M' OR athlete_gender == 'F' OR athlete_gender == 'O' OR athlete_gender == 'X'),
     country_code CHAR(3) NOT NULL,
     athlete_height INT,
     athlete_birth_date DATE,
     team_code CHAR(17),
     PRIMARY KEY (athlete_code),
-    FOREIGN KEY (country_code) REFERENCES Countries(country_code),
+    FOREIGN KEY (country_code) REFERENCES Countries(country_code) ON DELETE CASCADE,
     FOREIGN KEY (team_code) REFERENCES Teams(team_code)
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE Medals(
     medal_type VARCHAR(50),
     athlete_code CHAR(7) NOT NULL,
     PRIMARY KEY (medal_id),
-    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code)
+    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code) ON DELETE CASCADE
 );
 
 CREATE TABLE TeamParticipants(
@@ -49,8 +49,8 @@ CREATE TABLE TeamParticipants(
     result_rank INT,
     result VARCHAR(50),
     result_type VARCHAR(50),
-    FOREIGN KEY (team_code) REFERENCES Teams(team_code),
-    FOREIGN KEY (stage_code) REFERENCES Events(stage_code),
+    FOREIGN KEY (team_code) REFERENCES Teams(team_code) ON DELETE CASCADE,
+    FOREIGN KEY (stage_code) REFERENCES Events(stage_code) ON DELETE CASCADE,
     PRIMARY KEY (stage_code, team_code)
 );
 
@@ -60,7 +60,7 @@ CREATE TABLE IndividualParticipants(
     result_rank INT,
     result VARCHAR(50),
     result_type VARCHAR(50),
-    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code),
-    FOREIGN KEY (stage_code) REFERENCES Events(stage_code),
+    FOREIGN KEY (athlete_code) REFERENCES Athletes(athlete_code) ON DELETE CASCADE,
+    FOREIGN KEY (stage_code) REFERENCES Events(stage_code) ON DELETE CASCADE,
     PRIMARY KEY (stage_code, athlete_code)
 );

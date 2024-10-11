@@ -8,9 +8,11 @@ connection = mysql.connector.connect(
     user='me',
     password='myUserPassword',
     host='localhost',
-    database='dswork'
+    database='2024_Olympics_21425477'
 )
 cursor = connection.cursor()
+
+cursor.execute('SOURCE sql_scripts/tables.sql;')
 
 # Function to read by row and insert data
 def insertFunc(csv_path, insert_stmt):
@@ -28,25 +30,26 @@ def insertFunc(csv_path, insert_stmt):
             cursor.execute(insert_stmt, row)
     connection.commit()
 
+## Inserting data in specific order to allow foreign keys to work correctly ##
 # Countries Table (countries.csv)
 insertFunc('data/countries.csv', 'INSERT INTO Countries (country_code, country_name) VALUES (%s, %s);')
 
-# Teams Table
+# Teams Table (teams.csv)
 insertFunc('data/teams.csv', 'INSERT INTO Teams (team_code, team_name, team_gender) VALUES (%s, %s, %s);')
 
-# Events Table
+# Events Table (events.csv)
 insertFunc('data/events.csv', 'INSERT INTO Events (stage_code, discipline_name, event_name, event_datetime, stage, venue_name) VALUES (%s, %s, %s, %s, %s, %s);')
 
-# Athletes Table
+# Athletes Tables (athletes.csv)
 insertFunc('data/athletes.csv', 'INSERT INTO Athletes (athlete_code, athlete_name, athlete_gender, country_code, athlete_height, athlete_birth_date, team_code) VALUES (%s, %s, %s, %s, %s, %s, %s);')
 
-# Medals Table
+# Medals Table (medals.csv)
 insertFunc('data/medals.csv', 'INSERT INTO Medals (medal_date, medal_type, athlete_code) VALUES (%s, %s, %s);')
 
-# TeamParticipants Table
+# TeamParticipants Table (team_participants.csv)
 insertFunc('data/team_participants.csv', 'INSERT INTO TeamParticipants (team_code, stage_code, result_rank, result, result_type) VALUES (%s, %s, %s, %s, %s);')
 
-# IndividualParticipants Table
+# IndividualParticipants Table (individual_participants.csv)
 insertFunc('data/individual_participants.csv', 'INSERT INTO IndividualParticipants (athlete_code, stage_code, result_rank, result, result_type) VALUES (%s, %s, %s, %s, %s);')
 
 cursor.close()
