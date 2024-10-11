@@ -24,7 +24,7 @@ CREATE TABLE Events(
 CREATE TABLE Athletes(
     athlete_code CHAR(7),
     athlete_name VARCHAR(100) NOT NULL,
-    athlete_gender CHAR(1) CHECK (athlete_gender = 'M' OR athlete_gender = 'F' OR athlete_gender = 'O' OR athlete_gender = 'X'),
+    athlete_gender CHAR(1) CHECK (athlete_gender = 'M' OR athlete_gender = 'F'),
     country_code CHAR(3) NOT NULL,
     athlete_height INT,
     athlete_birth_date DATE,
