@@ -13,6 +13,6 @@ CREATE TRIGGER UpdateMedals AFTER INSERT ON Medals
                 UPDATE Countries SET silver_count = silver_count + 1 WHERE country_code = medal_country_code;
             ELSEIF NEW.medal_type = 'Bronze Medal' THEN
                 UPDATE Countries SET bronze_count = bronze_count + 1 WHERE country_code = medal_country_code;
-            END IF
+            END IF;
         END//
 DELIMITER ;
