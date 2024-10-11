@@ -12,8 +12,6 @@ connection = mysql.connector.connect(
 )
 cursor = connection.cursor()
 
-cursor.execute('SOURCE sql_scripts/tables.sql;')
-
 # Function to read by row and insert data
 def insertFunc(csv_path, insert_stmt):
     with open(csv_path, mode='r') as csvfile:
